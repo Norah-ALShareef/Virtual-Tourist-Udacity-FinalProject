@@ -1,23 +1,24 @@
+
 import UIKit
 import MapKit
 import CoreData
-
-class photoSelectedLocationColectionView: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate, MKMapViewDelegate {
+class NeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate, MKMapViewDelegate {
     
-    @IBOutlet weak var mapViewMini: MKMapView!
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var homeSweetHome: UIBarButtonItem!
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var collictionView: UICollectionView!
     
-    @IBOutlet weak var newCollectionButton: UIBarButtonItem!
-    
-    @IBOutlet weak var statusLabel: UILabel!
-    
-
     @IBOutlet weak var activityIndecator: UIActivityIndicatorView!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var NewColictonTaped: UIBarButtonItem!
+    
+    
     
     var pin: Pin!
     var fechResultController: NSFetchedResultsController<Photo>!
     var fechResultControllerPin: NSFetchedResultsController<Pin>!
+    
     var pageNumber = 0
     var Delet = false
     
@@ -28,38 +29,27 @@ class photoSelectedLocationColectionView: UIViewController, UICollectionViewData
         return (fechResultController.fetchedObjects?.count ?? 0) != 0
     }
     
-    @IBOutlet weak var Home: UIBarButtonItem!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupFetchResultController()
         setupFetchResultControllerPin()
         showResult()
-        showStatusLabel()
         print(pageNumber)
         
-      
     }
     
-    func showStatusLabel(){
-        if collectionView.numberOfSections == 0 {
-            statusLabel.isHidden = false
-        } else{
-            statusLabel.isHidden = true
-            
-        }
-
-    }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         fechResultController = nil
     }
     
+    
     func setupFetchResultController(){
         
         let fetchRequst: NSFetchRequest<Photo> = Photo.fetchRequest()
         fetchRequst.sortDescriptors = [ NSSortDescriptor(key: "creationDate", ascending: false) ]
-      
+        
         fetchRequst.predicate = NSPredicate(format:"pin == %@", pin)
         
         fechResultController = NSFetchedResultsController(fetchRequest: fetchRequst, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
@@ -69,11 +59,11 @@ class photoSelectedLocationColectionView: UIViewController, UICollectionViewData
             try fechResultController.performFetch()
             if doWehavePhoto{
                 updateUI(processing: false)
-
+                print("yes we have photo")
             } else {
-
-                    newCollectionTapped(self)
-                }
+                
+                newColictionTabed(self)
+            }
         } catch{
             fatalError("The fetch could not be performed: \(error.localizedDescription)")
         }
@@ -81,13 +71,21 @@ class photoSelectedLocationColectionView: UIViewController, UICollectionViewData
     }
     
     
-    @IBAction func newCollectionTapped(_ sender: Any) {
+    
+    
+    
+    
+    
+    
+    
+    
+    @IBAction func newColictionTabed(_ sender: Any) {
         
         updateUI(processing: true)
         print(pageNumber)
         pageNumber += 1
-
-
+        
+        
         if doWehavePhoto {
             Delet = true
             for photo in fechResultController.fetchedObjects!{
@@ -105,12 +103,9 @@ class photoSelectedLocationColectionView: UIViewController, UICollectionViewData
                     return
                 }
                 guard let urls = urls, !urls.isEmpty else {
-
-                    print("enterd gaurd")
-                   self.statusLabel.isHidden = false
                     
-                   
-
+                    print("enterd gaurd")
+                    self.statusLabel.isHidden = false
                     return
                 }
                 for url in urls{
@@ -118,86 +113,92 @@ class photoSelectedLocationColectionView: UIViewController, UICollectionViewData
                     photo.imageUrl = url
                     photo.pin = self.pin
                     self.statusLabel.isHidden = true
-
+                    
                 }
                 
                 try? self.context.save()
-
+                
             }
         }
         
         // TO RETREVE DIFFRENT PHOTO IN ECH TIME
         print(pageNumber)
-
+        
     }
     
     func updateUI(processing: Bool){
         
-        collectionView.isUserInteractionEnabled = !processing
+        collictionView.isUserInteractionEnabled = !processing
         if processing {
-            newCollectionButton.title = " "
+            NewColictonTaped.title = " "
             activityIndecator.startAnimating()
-
-
+            self.statusLabel.isHidden = false
+            
+            
         }else {
             activityIndecator.stopAnimating()
             activityIndecator.hidesWhenStopped = true
-            newCollectionButton.title = " New Collection"
-
+            NewColictonTaped.title = " New Collection"
+            
         }
     }
     
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         super.willTransition(to: newCollection, with: coordinator)
-        collectionView.reloadData()
+        collictionView.reloadData()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-    
+        
         
         //Delet
         if let indexpath = indexPath, type == .delete && !Delet{
-            collectionView.deleteItems(at: [indexpath])
+            collictionView.deleteItems(at: [indexpath])
             return
         }
         
         // insert
         if let indexpath = indexPath, type == .insert {
-            collectionView.insertItems(at: [indexpath])
+            collictionView.insertItems(at: [indexpath])
             return
         }
         //udate
         if type != .update{
-            collectionView.reloadData()
+            collictionView.reloadData()
         }
     }
     // CollictionView ---------------------------------------------------------
- 
-     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: CGFloat((collectionView.frame.size.width / 2) - 10), height: CGFloat(150))
     }
-
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return fechResultController.fetchedObjects?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "phorocell", for: indexPath) as! selectedPhotoCell
-        print ("Colliction view cell")
+        print ("i enterd the cell ")
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath) as! CollectionViewCell
         let photo = fechResultController.object(at: indexPath)
         cell.imageView.setPhoto(photo)
         return cell
     }
+    /*
+     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath) as! selectedPhotoCell
+     print ("Colliction view cell")
+     let photo = fechResultController.object(at: indexPath)
+     cell.imageVieNextPage.setPhoto(photo)
+     return cell
+     }*/
     // for deletion
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let photo = fechResultController.object(at: indexPath)
         context.delete(photo)
         try? context.save()
     }
-    // END of CollictionView ---------------------------------------------------------
-    //EndminiMapView --------------------------------------------------------------------------
-
     
     func setupFetchResultControllerPin(){
         print("entered fech requst")
@@ -220,12 +221,12 @@ class photoSelectedLocationColectionView: UIViewController, UICollectionViewData
             return
         }
         for pin in pins{
-            if mapViewMini.annotations.contains(where: { pin.compare(to: $0.coordinate)}){
+            if mapView.annotations.contains(where: { pin.compare(to: $0.coordinate)}){
                 continue
             }
             let annotation = MKPointAnnotation()
             annotation.coordinate = pin.coordinate
-            mapViewMini.addAnnotation(annotation)
+            mapView.addAnnotation(annotation)
         }
     }
     
@@ -243,33 +244,39 @@ class photoSelectedLocationColectionView: UIViewController, UICollectionViewData
         // creat annotation
         let annotation = MKPointAnnotation()
         annotation.coordinate = cordinte
-        mapViewMini.addAnnotation(annotation)
+        mapView.addAnnotation(annotation)
         
-
+        
         let region = MKCoordinateRegion(center: cordinte, span: MKCoordinateSpan(latitudeDelta: 3.00, longitudeDelta: 3.00))
-
-        mapViewMini.setRegion(region, animated: true)
+        
+        mapView.setRegion(region, animated: true)
         
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       print("enter prepare function")
-      if segue.identifier == "nextPageView" {
-          let photosVC = segue.destination as! NeViewController
-        photosVC.pin = sender as? Pin
-        
+        print("enter prepare function")
+        if segue.identifier == "showMore" {
+            let photosVC = segue.destination as! photoSelectedLocationColectionView
+            photosVC.pin = sender as? Pin
+            
+        }
     }
-   }
+    
+    // MapViewDelegate ------------------------------------------------------------------------------
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        // pring pin
+        print("pring the pin function")
         let pin = fechResultControllerPin.fetchedObjects?.filter{
             $0.compare(to: view.annotation!.coordinate)
             }.first!
-        performSegue(withIdentifier: "nextPageView", sender: pin)
-
+        
+        performSegue(withIdentifier: "showMore", sender: pin)
     }
-    //EndminiMapView --------------------------------------------------------------------------
-    @IBAction func backTapped(_ sender: Any) {
+    
+    
+    @IBAction func back(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+        
     }
-    
-    
 }
+

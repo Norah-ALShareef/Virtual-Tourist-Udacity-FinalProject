@@ -19,6 +19,7 @@ extension Pin {
         return (latitude == coordinate.latitude && longtude == coordinate.longitude)
         
     }
+    
     // to set the data
     public override func awakeFromInsert() {
         super.awakeFromInsert()

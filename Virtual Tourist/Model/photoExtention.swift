@@ -35,3 +35,4 @@ extension Photo {
         creationDate = Date()
     }
 }
+

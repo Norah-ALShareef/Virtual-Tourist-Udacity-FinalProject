@@ -4,12 +4,12 @@ import UIKit
 let imageCache = NSCache<NSString, AnyObject>()
 
 class customImageView: UIImageView {
-
+    
     var imageUrl: URL!
     
     func setPhoto(_ newPhoto: Photo){
         print("enterd set photo functon")
-            photo = newPhoto
+        photo = newPhoto
     }
     
     private var photo: Photo! {
@@ -57,7 +57,7 @@ class customImageView: UIImageView {
                 
             }
             
-        }.resume()
+            }.resume()
     }
     
     lazy var activityIndicatorView2: UIActivityIndicatorView = {
@@ -84,4 +84,5 @@ class customImageView: UIImageView {
         }
     }
 }
+
 

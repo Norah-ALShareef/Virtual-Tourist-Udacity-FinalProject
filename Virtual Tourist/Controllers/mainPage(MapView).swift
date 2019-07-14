@@ -4,7 +4,7 @@ import MapKit
 import CoreData
 
 class mainPage_MapView_: UIViewController, MKMapViewDelegate, NSFetchedResultsControllerDelegate {
-
+    
     @IBOutlet weak var mapView: MKMapView!
     
     var fechResultController : NSFetchedResultsController <Pin>!
@@ -16,25 +16,25 @@ class mainPage_MapView_: UIViewController, MKMapViewDelegate, NSFetchedResultsCo
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupFetchResultController()
-
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         fechResultController = nil
-
+        
     }
     
     func setupFetchResultController(){
         print("entered fech requst")
         let fetchRequst: NSFetchRequest<Pin> = Pin.fetchRequest()
         fetchRequst.sortDescriptors = [ NSSortDescriptor(key: "creationDate", ascending: false) ]
-         fechResultController = NSFetchedResultsController(fetchRequest: fetchRequst, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        fechResultController = NSFetchedResultsController(fetchRequest: fetchRequst, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fechResultController.delegate = self
         
         do {
             try fechResultController.performFetch()
-             updatemapView()
+            updatemapView()
         } catch{
             fatalError("The fetch could not be performed: \(error.localizedDescription)")
         }
@@ -79,11 +79,13 @@ class mainPage_MapView_: UIViewController, MKMapViewDelegate, NSFetchedResultsCo
         print("pring the pin function")
         let pin = fechResultController.fetchedObjects?.filter{
             $0.compare(to: view.annotation!.coordinate)
-        }.first!
+            }.first!
+        
         performSegue(withIdentifier: "nextpage", sender: pin)
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         updatemapView()
     }
-  }
+}
+

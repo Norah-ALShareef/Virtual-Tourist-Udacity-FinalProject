@@ -24,6 +24,8 @@
 		A109D98E22D6437500AAE12A /* alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A109D98D22D6437500AAE12A /* alert.swift */; };
 		A111F46422D7B7520051A26E /* FlikrAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A111F46322D7B7520051A26E /* FlikrAPI.swift */; };
 		A19283F522DB6F1E0097AA95 /* VirtualTourist_512.png in Resources */ = {isa = PBXBuildFile; fileRef = A19283F422DB6F1E0097AA95 /* VirtualTourist_512.png */; };
+		A19283F722DB84DF0097AA95 /* NeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19283F622DB84DF0097AA95 /* NeViewController.swift */; };
+		A19283FB22DB96E20097AA95 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19283FA22DB96E20097AA95 /* CollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		A109D98D22D6437500AAE12A /* alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = alert.swift; sourceTree = "<group>"; };
 		A111F46322D7B7520051A26E /* FlikrAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlikrAPI.swift; sourceTree = "<group>"; };
 		A19283F422DB6F1E0097AA95 /* VirtualTourist_512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = VirtualTourist_512.png; path = "../../../../../Downloads/virtual-tourist-app-icons/VirtualTourist_512.png"; sourceTree = "<group>"; };
+		A19283F622DB84DF0097AA95 /* NeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeViewController.swift; sourceTree = "<group>"; };
+		A19283FA22DB96E20097AA95 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +158,7 @@
 			children = (
 				A109D97C22D5ED6C00AAE12A /* mainPage(MapView).swift */,
 				A109D97E22D5EDE600AAE12A /* photoSelectedLocationColectionView.swift */,
+				A19283F622DB84DF0097AA95 /* NeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				A109D98022D5EE8E00AAE12A /* selectedPhotoCell.swift */,
+				A19283FA22DB96E20097AA95 /* CollectionViewCell.swift */,
 				A109D98222D5FF6E00AAE12A /* customImageView.swift */,
 			);
 			path = View;
@@ -318,7 +324,9 @@
 				A109D98C22D63B8700AAE12A /* photoExtention.swift in Sources */,
 				A109D97F22D5EDE600AAE12A /* photoSelectedLocationColectionView.swift in Sources */,
 				A109D98322D5FF6E00AAE12A /* customImageView.swift in Sources */,
+				A19283F722DB84DF0097AA95 /* NeViewController.swift in Sources */,
 				A109D98822D6062F00AAE12A /* DataController.swift in Sources */,
+				A19283FB22DB96E20097AA95 /* CollectionViewCell.swift in Sources */,
 				A109D94C22D5DC9800AAE12A /* AppDelegate.swift in Sources */,
 				A109D98A22D63B7000AAE12A /* pinExtention.swift in Sources */,
 				A109D97D22D5ED6C00AAE12A /* mainPage(MapView).swift in Sources */,
