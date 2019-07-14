@@ -3,28 +3,28 @@ import UIKit
 import MapKit
 import CoreData
 
-class mainPage_MapView_: UIViewController, MKMapViewDelegate, NSFetchedResultsControllerDelegate {
+class mainPage_MapView_: UIViewController, NSFetchedResultsControllerDelegate {
     
+    //IBOutlet Functions --------------------------------------------------------------------
     @IBOutlet weak var mapView: MKMapView!
     
+    //variabels --------------------------------------------------------------------
     var fechResultController : NSFetchedResultsController <Pin>!
-    
     var context: NSManagedObjectContext{
         return DataController.sharedDataController.viewContext
     }
     
+    //Override Functions --------------------------------------------------------------------
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupFetchResultController()
-        
     }
-    
+    //--------------------------------------------------------------------
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         fechResultController = nil
-        
     }
-    
+    //Functions --------------------------------------------------------------------
     func setupFetchResultController(){
         print("entered fech requst")
         let fetchRequst: NSFetchRequest<Pin> = Pin.fetchRequest()
@@ -38,18 +38,8 @@ class mainPage_MapView_: UIViewController, MKMapViewDelegate, NSFetchedResultsCo
         } catch{
             fatalError("The fetch could not be performed: \(error.localizedDescription)")
         }
-        
     }
-    
-    @IBAction func addPinLongPress(_ sender: UILongPressGestureRecognizer) {
-        if sender.state != .began{ return }
-        let touchPoint = sender.location(in: mapView)
-        
-        let pin = Pin(context: context)
-        pin.coordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView)
-        try? context.save()
-    }
-    
+    //--------------------------------------------------------------------
     func updatemapView(){
         guard let pins = fechResultController.fetchedObjects else {
             return
@@ -63,7 +53,7 @@ class mainPage_MapView_: UIViewController, MKMapViewDelegate, NSFetchedResultsCo
             mapView.addAnnotation(annotation)
         }
     }
-    
+    //--------------------------------------------------------------------
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("enter prepare function")
         if segue.identifier == "nextpage" {
@@ -72,8 +62,25 @@ class mainPage_MapView_: UIViewController, MKMapViewDelegate, NSFetchedResultsCo
             
         }
     }
+    //--------------------------------------------------------------------
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        updatemapView()
+    }
     
-    // MapViewDelegate ------------------------------------------------------------------------------
+    //IBAction --------------------------------------------------------------------
+    @IBAction func addPinLongPress(_ sender: UILongPressGestureRecognizer) {
+        if sender.state != .began{ return }
+        let touchPoint = sender.location(in: mapView)
+        
+        let pin = Pin(context: context)
+        pin.coordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView)
+        try? context.save()
+    }
+}
+
+//extension --------------------------------------------------------------------
+extension mainPage_MapView_ :  MKMapViewDelegate {
+    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         // pring pin
         print("pring the pin function")
@@ -82,10 +89,6 @@ class mainPage_MapView_: UIViewController, MKMapViewDelegate, NSFetchedResultsCo
             }.first!
         
         performSegue(withIdentifier: "nextpage", sender: pin)
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        updatemapView()
     }
 }
 

@@ -14,7 +14,7 @@ struct FlickrAPI {
             guard (error == nil) else {
                 complition(nil, error, nil)
                 
-//alert(titel: "Error", message: "there is No enternet connection")
+                //alert(titel: "Error", message: "there is No enternet connection")
                 return
             }
             

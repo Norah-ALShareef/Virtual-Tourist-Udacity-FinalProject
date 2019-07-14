@@ -16,7 +16,6 @@ class customImageView: UIImageView {
         didSet{
             if let image = photo.getImage(){
                 print ("did call get image ")
-                // hideActivityIndicatorView()
                 self.image = image
                 return
             }
@@ -24,10 +23,7 @@ class customImageView: UIImageView {
             guard let url = photo.imageUrl else {
                 return
             }
-            print(url)
-            
             loadImageUsingCache(with: url)
-            
         }
     }
     
@@ -54,7 +50,6 @@ class customImageView: UIImageView {
                 self.photo.set(image: DownlodedImage)
                 try? self.photo.managedObjectContext?.save()
                 self.hideActivityIndecatorView()
-                
             }
             
             }.resume()

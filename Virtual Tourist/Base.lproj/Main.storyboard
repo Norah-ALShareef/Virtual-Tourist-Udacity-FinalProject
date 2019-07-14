@@ -21,7 +21,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XLY-H0-jiu">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="zZw-qr-kZ5"/>
+                                    <navigationItem title="Virtual Tourist" id="zZw-qr-kZ5"/>
                                 </items>
                             </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="E5q-Vj-faF">
@@ -86,7 +86,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pVD-Ny-P17">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="7rA-DQ-RaJ">
+                                    <navigationItem title="Virtual Tourist" id="7rA-DQ-RaJ">
                                         <barButtonItem key="leftBarButtonItem" title="back" id="jMx-bR-8Pj">
                                             <connections>
                                                 <action selector="backTapped:" destination="VDe-68-Gow" id="a4c-7d-Uc4"/>
@@ -104,21 +104,21 @@
                                 <rect key="frame" x="0.0" y="291" width="414" height="522"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tag-9h-YKr">
-                                    <size key="itemSize" width="169" height="149"/>
+                                    <size key="itemSize" width="174" height="176"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="phorocell" id="9W0-So-SmQ" customClass="selectedPhotoCell" customModule="Virtual_Tourist" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="169" height="149"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="174" height="176"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="169" height="149"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="174" height="176"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5tk-fL-e7D" customClass="customImageView" customModule="Virtual_Tourist" customModuleProvider="target">
-                                                    <rect key="frame" x="2" y="3" width="169" height="149"/>
+                                                    <rect key="frame" x="2" y="3" width="172" height="172"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -193,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ay8-oE-9EF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="728" y="-77"/>
+            <point key="canvasLocation" x="727.536231884058" y="-77.008928571428569"/>
         </scene>
         <!--Ne View Controller-->
         <scene sceneID="YEC-gH-xBr">
@@ -204,9 +204,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9r6-TW-skb">
-                                <rect key="frame" x="0.0" y="19" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="kIU-bz-2lX">
+                                    <navigationItem title="Virtual Tourist" id="kIU-bz-2lX">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="2Si-kq-g71">
                                             <connections>
                                                 <action selector="back:" destination="yf3-uJ-lHR" id="6Lp-7Y-yQ1"/>
@@ -222,7 +222,7 @@
                                 </items>
                             </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Lhi-wr-L3t">
-                                <rect key="frame" x="0.0" y="63" width="414" height="226"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="226"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="226" id="FCL-td-P7D"/>
                                 </constraints>
@@ -246,7 +246,7 @@
                                 </items>
                             </toolbar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Ax-gX-af5">
-                                <rect key="frame" x="0.0" y="289" width="414" height="523"/>
+                                <rect key="frame" x="0.0" y="314" width="414" height="498"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1Wh-PN-zBq">
                                     <size key="itemSize" width="178" height="172"/>
@@ -314,7 +314,7 @@
                             <constraint firstItem="4Af-Eh-AE0" firstAttribute="trailing" secondItem="5Ax-gX-af5" secondAttribute="trailing" id="h7y-Em-f8v"/>
                             <constraint firstItem="Lhi-wr-L3t" firstAttribute="top" secondItem="9r6-TW-skb" secondAttribute="bottom" id="kyK-mP-a2c"/>
                             <constraint firstItem="9r6-TW-skb" firstAttribute="leading" secondItem="Lhi-wr-L3t" secondAttribute="leading" id="mh4-HN-by0"/>
-                            <constraint firstItem="9r6-TW-skb" firstAttribute="top" secondItem="xVm-p9-y81" secondAttribute="topMargin" constant="-25" id="nK8-0N-nYM"/>
+                            <constraint firstItem="9r6-TW-skb" firstAttribute="top" secondItem="xVm-p9-y81" secondAttribute="topMargin" id="nK8-0N-nYM"/>
                             <constraint firstItem="5Ax-gX-af5" firstAttribute="top" secondItem="Lhi-wr-L3t" secondAttribute="bottom" id="nUR-XI-IHJ"/>
                             <constraint firstItem="Lhi-wr-L3t" firstAttribute="leading" secondItem="4Af-Eh-AE0" secondAttribute="leading" id="nm9-qO-0f6"/>
                         </constraints>
