@@ -3,6 +3,9 @@ This App downloads and stores images from Flickr.
 The app allows users to drop pins on a map, as if they were stops on a tour. 
 Users will then be able to download pictures for the location and persist both the pictures, and the association of the pictures with the pin.
 
+<img width="454" alt="minPage" src="https://user-images.githubusercontent.com/40995452/61463650-86422a00-a97d-11e9-9a35-0eca1ac0d652.png">
+
+
 ## Installation 
 
 - clone this projet by adding this line to your Trminal
