@@ -20,6 +20,9 @@ This project containe 3 ViewControolers :
 
 ## Requirements 
 
+- xcode 10
+- Swift 5
+- flickr Key
 
 ## Copyright 
 
