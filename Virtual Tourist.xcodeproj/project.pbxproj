@@ -128,9 +128,9 @@
 				A109D97922D5ECC500AAE12A /* Controllers */,
 				A109D94F22D5DC9800AAE12A /* Main.storyboard */,
 				A109D95222D5DC9900AAE12A /* Assets.xcassets */,
+				A19283F422DB6F1E0097AA95 /* VirtualTourist_512.png */,
 				A109D95422D5DC9900AAE12A /* LaunchScreen.storyboard */,
 				A109D95722D5DC9900AAE12A /* Info.plist */,
-				A19283F422DB6F1E0097AA95 /* VirtualTourist_512.png */,
 			);
 			path = "Virtual Tourist";
 			sourceTree = "<group>";
