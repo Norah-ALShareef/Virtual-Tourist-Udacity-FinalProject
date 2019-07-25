@@ -26,6 +26,8 @@ This project containe 3 ViewControolers :
 - `photoSelectedLocationColectionView` Here tha magic will happen two Fetche function has been performed `NSFetchedResultsController<Photo>!` &  `NSFetchedResultsController<Pin>!` and collectionViw functions to show the pics  related to the pin and delet thim.
 - `NeViewController`  same as photoSelectedLocationColectionView MapView here allows the user to preview the pic from pins  
 
+
+
 ## Requirements 
 
 - xcode 10
